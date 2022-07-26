@@ -18,6 +18,7 @@ public class CellListener implements ActionListener {
         switch (window.getState()) {
             case BLOCKING -> {
                 buttonClicked.setBackground(Color.DARK_GRAY);
+                buttonClicked.setText("BLOCK");
                 window.addCellBlocked();
                 if(window.cellsBlocked() == 2) {
                     window.setState(GameState.O_PLAYING);

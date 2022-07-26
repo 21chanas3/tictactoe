@@ -7,9 +7,7 @@ Everyone know what Tic Tac Toe is, so much so, it's pretty much impossible to wi
 2. Tic Tac Toe proceeds as usual, players alternate to mark cells until one person declares a win
 
 ### What on earth is declaring a win?
-As the title says, in order to win, you must declare that you have done so. But there are certain caveats:
-1. You must declare a win either before your opponent marks their next cell. Once your opponent has marked their cell, any valid winning combination is void. You can even declare a win before marking your next cell, but...
-2. If you incorrectly declare a win, **your opponent wins**
+As the title says, in order to win, you must declare that you have done so. If you do not, the game continues as normal until your opponent wins or your notice you've already won. However, if you incorrectly declare a win, **your opponent wins**
 
 ## How do I know I have won?
 Split the board into three smaller tic-tac-toe boards. Firstly, a winning condition can arise when a winning conditions for classic tic-tac-toe arises on these smaller boards:

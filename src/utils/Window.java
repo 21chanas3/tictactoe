@@ -9,7 +9,7 @@ public class Window {
     GameState state = GameState.BLOCKING;
     int blockedCells = 0;
     JPanel textArea;
-    JButton[][] boardButtons = new JButton[3][9];
+    JButton[][][] boardButtons = new JButton[3][3][3];
 
     public Window() {
         JFrame frame = new JFrame("3D Tic Tac Toe");
@@ -30,20 +30,25 @@ public class Window {
     }
 
     private JPanel generateGameArea() {
-        JPanel gameArea = new JPanel(new GridLayout(3,9));
+        JPanel gameArea = new JPanel(new GridLayout(1,3));
         gameArea.setSize(900,300);
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 9; j++) {
-                JButton newButton = new JButton();
-                if(j >= 3 && j < 6) {
-                    newButton.setBackground(Color.LIGHT_GRAY);
-                } else {
-                    newButton.setBackground(Color.WHITE);
+        for(int i = 0; i < 3; i++) {
+            JPanel threegrid = new JPanel(new GridLayout(3,3));
+            for(int j = 0; j < 3; j++) {
+                for (int k = 0; k < 3; k++) {
+                    JButton newButton = new JButton();
+                    newButton.setText("-");
+                    if(i == 1) {
+                        newButton.setBackground(Color.LIGHT_GRAY);
+                    } else {
+                        newButton.setBackground(Color.WHITE);
+                    }
+                    newButton.addActionListener(new CellListener(this));
+                    threegrid.add(newButton);
+                    boardButtons[i][j][k] = newButton;
                 }
-                newButton.addActionListener(new CellListener(this));
-                gameArea.add(newButton);
-                boardButtons[i][j] = newButton;
             }
+            gameArea.add(threegrid);
         }
         return gameArea;
     }
@@ -67,6 +72,11 @@ public class Window {
     public void setState(GameState state) {
         this.state = state;
     }
+
+    public JButton[][][] getBoardButtons() {
+        return boardButtons;
+    }
+
     public GameState getState() {
         return state;
     }
